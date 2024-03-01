@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import math
-        
+import re
+
 def ex ():
 
     x = np.linspace(0, 0.1, 5)
@@ -43,9 +43,16 @@ def ex2 ():
         dictionary[i] = s2.count(i)
     #print("D: ")
     #print(dictionary)
-    dictionary['...']=s.count('...')
     #print("S: ",s.count('...'))
-    dictionary['.']=(int(dictionary['.'])-3*s.count('...'))
+        
+    #dictionary['...']=s.count('...')    
+    #dictionary['.']=(int(dictionary['.'])-3*s.count('...'))
+        
+    r=re.findall('[.]+',s)
+    c=r.count('...')
+    dictionary['.']=(int(dictionary['.'])-3*c)
+    dictionary['...']=c
+    
     print("D1: ")
     print(dictionary)
     
